@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "WeChat Markdown Exporter",
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "src/popup/index.html"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "clipboardWrite",
+        "downloads"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://mp.weixin.qq.com/s*"
+            ],
+            "js": [
+                "src/content/index.js"
+            ]
+        }
+    ]
+}
