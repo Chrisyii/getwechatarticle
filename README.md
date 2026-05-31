@@ -1,10 +1,13 @@
 <div align="center">
 
-# 💬 WeChat Markdown Exporter
+# 💬 WeChat Liberator(进行中 · 原 WeChat Markdown Exporter)
 
-**一键将微信公众号文章导出为高质量的 Markdown 文件**
+**让微信继续当渠道,你的阅读不再当人质。**
 
-一个轻量级的 Chrome 扩展，让你轻松保存微信文章内容，告别手动复制的烦恼。
+一个浏览器扩展。用户照常在微信 Web（公众号文章 + 合集/搜一搜 + 微信读书）上阅读,
+插件在背后悄悄把数据复制一份到本地,
+并提供搜索、导出、订阅、Obsidian 同步、Wayback 公共存证等出口 ——
+**让你从微信「只能消费、无法拥有」的状态,回到「拥有、可携带、可连接」**。
 
 [![Chrome Extension](https://img.shields.io/badge/Platform-Chrome-4285F4?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green.svg)](https://developer.chrome.com/docs/extensions/mv3/)
@@ -14,7 +17,43 @@
 
 ---
 
-## ✨ 功能特点
+## 🗺️ 项目愿景与路线图
+
+本仓库目前的代码(单篇公众号文章 → Markdown)是整个项目的 **Act 1**。
+完整规划已写入 [docs/](./docs/),按需展开:
+
+| 文档 | 用途 |
+|---|---|
+| [docs/HANDOFF.md](./docs/HANDOFF.md) | **人类/agent 都先从这里开始** —— 30 秒了解项目、决策上下文、禁止事项 |
+| [docs/IMPLEMENTATION_WORKFLOW.md](./docs/IMPLEMENTATION_WORKFLOW.md) | **远端 agent 执行入口** —— 从 GitHub 拉取后按 Gate 从头实现到尾 |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 系统分层、技术选型、七条铁律、可做/不做边界 |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Act 1~5 的任务清单和退出标准 |
+| [docs/DATA_MODEL.md](./docs/DATA_MODEL.md) | IndexedDB schema + 导出 frontmatter 规范 |
+| [docs/CAPTURE_SPEC.md](./docs/CAPTURE_SPEC.md) | 公众号、合集、搜一搜、Wayback、微信读书的抓取规格 / 反检测原则 |
+
+**执行方式**:
+
+```text
+git clone https://github.com/Chrisyii/getwechatarticle.git
+cd getwechatarticle
+先读 docs/HANDOFF.md
+再按 docs/IMPLEMENTATION_WORKFLOW.md 的 Gate 逐阶段实现
+```
+
+**Act 概览**:
+
+```diagram
+  Act 1            Act 2              Act 3             Act 4             Act 5
+╭────────╮    ╭────────────╮    ╭──────────╮    ╭────────────╮    ╭──────────╮
+│ 单篇导出│──▶│ 影子图书馆 │──▶│ 协议桥   │──▶│ 微信读书   │──▶│ 研究分支 │
+│ 加固    │   │ Dashboard  │   │ Wayback  │   │ EPUB/笔记  │   │ 视频号等 │
+╰────────╯    ╰────────────╯    ╰──────────╯    ╰────────────╯    ╰──────────╯
+  当前起点       产品质变点          打通生态         会员前抢救       不承诺主线
+```
+
+---
+
+## ✨ 当前已实现功能(Act 0)
 
 - 📋 **一键提取** — 在微信文章页面点击扩展图标即可提取全文
 - 📝 **高质量 Markdown** — 智能转换，保留标题、代码块、图片等格式
